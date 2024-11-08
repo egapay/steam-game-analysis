@@ -52,5 +52,6 @@ This project analyzes the top Steam games over the years using SQL, Python, Exce
 This project workflow showcases a full-stack data analytics process, integrating SQL for data management, Python for data processing, Excel for validation, and Power BI for visualization.
 
 ## Resources
+- https://www.kaggle.com/datasets/nikdavis/steam-store-games/data
 - https://nik-davis.github.io/posts/2019/steam-data-collection/
 - https://www.kaggle.com/datasets/nikdavis/steam-store-raw?select=steamspy_data.csv
