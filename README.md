@@ -51,8 +51,22 @@ This project analyzes the top Steam games over the years using SQL, Python, Exce
 
 This project workflow showcases a full-stack data analytics process, integrating SQL for data management, Python for data processing, Excel for validation, and Power BI for visualization.
 
+## Required Fields For Analysis
+- Price
+- Rating
+- Negative/Positive review count
+- 
+
+## Example of using Steam API
+- https://store.steampowered.com/api/appdetails?appids=550
+- https://store.steampowered.com/api/appdetails/?appids=550,570,1623730&filters=price_overview
+   - If price/initial price = 0 = Free!
+- https://partner.steamgames.com/doc/store/getreviews (NOT NEEDED, shows up in steamspy api)
+   - Get total number of positive/negative reviews
+
 ## Resources
-- https://steamspy.com/api.php
+- https://steamspy.com/api.php -> https://steamspy.com/api.php?request=top100forever
+- https://wiki.teamfortress.com/wiki/User:RJackson/StorefrontAPI
 - https://www.kaggle.com/datasets/nikdavis/steam-store-games/data
 - https://nik-davis.github.io/posts/2019/steam-data-collection/
 - https://www.kaggle.com/datasets/nikdavis/steam-store-raw?select=steamspy_data.csv
