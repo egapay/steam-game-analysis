@@ -55,7 +55,6 @@ This project workflow showcases a full-stack data analytics process, integrating
 - Price
 - Rating
 - Negative/Positive review count
-- 
 
 ## Example of using Steam API
 - https://store.steampowered.com/api/appdetails?appids=550
@@ -65,6 +64,7 @@ This project workflow showcases a full-stack data analytics process, integrating
    - Get total number of positive/negative reviews
 
 ## Resources
+- https://www.kaggle.com/datasets/fronkongames/steam-games-dataset
 - https://steamspy.com/api.php -> https://steamspy.com/api.php?request=top100forever
 - https://wiki.teamfortress.com/wiki/User:RJackson/StorefrontAPI
 - https://www.kaggle.com/datasets/nikdavis/steam-store-games/data
