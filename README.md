@@ -3,9 +3,6 @@
 ## Project Overview
 This project analyzes the top Steam games over the years using SQL, Python, Excel, and Power BI to gain insights into trends, player counts, and other game metrics.
 
-## Resources
-- https://nik-davis.github.io/posts/2019/steam-data-collection/
-
 ## Workflow
 
 ### 1. Data Collection and Storage with SQL
@@ -53,3 +50,7 @@ This project analyzes the top Steam games over the years using SQL, Python, Exce
 ---
 
 This project workflow showcases a full-stack data analytics process, integrating SQL for data management, Python for data processing, Excel for validation, and Power BI for visualization.
+
+## Resources
+- https://nik-davis.github.io/posts/2019/steam-data-collection/
+- https://www.kaggle.com/datasets/nikdavis/steam-store-raw?select=steamspy_data.csv
