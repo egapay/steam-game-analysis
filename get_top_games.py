@@ -26,11 +26,14 @@ for appid, appInfo in data.items():
         "appid":appid,
         "name":appInfo.get("name"),
         "positive":appInfo.get("positive"),
+        "positive_percentage": round((appInfo.get("positive") / (appInfo.get("positive") + appInfo.get("negative")) * 100), 2),
         "negative":appInfo.get("negative"),
+        "negative_percentage": round((appInfo.get("negative") / (appInfo.get("positive") + appInfo.get("negative")) * 100), 2),
+        "total_reviews": appInfo.get("positive") + appInfo.get("negative"),
         "price":locale.currency(int(appInfo.get("price"))/100),
         "owners":appInfo.get("owners"),
-        "average_playtime":appInfo.get("average_forever"),
-        "median_playtime":appInfo.get("median_forever")
+        "average_playtime_hours": round((appInfo.get("average_forever") / 60), 0),
+        "median_playtime_hours": round((appInfo.get("median_forever") / 60), 0),
     })
 
 df = pd.DataFrame(dataList)
