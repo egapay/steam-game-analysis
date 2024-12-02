@@ -5,4 +5,12 @@ matplotlib.use('Agg')
 
 df = pd.read_csv('topgames.csv')
 
-df.plot.scatter(x="positive", y = "price", s=100)
+excluded_columns = ["appid", "name", "owners"]
+
+updated_df = df.drop(columns=excluded_columns)
+
+correlation_df = updated_df.corr()
+correlation_long_df = correlation_df.stack().reset_index()
+correlation_long_df.columns = ['Var1', 'Var2', 'Correlation']
+
+correlation_long_df.to_csv("correlation.csv", index=False)
