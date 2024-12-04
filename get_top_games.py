@@ -1,11 +1,14 @@
 import requests
 import locale
 import pandas as pd
-import sqlalchemy
 import psycopg2 as pgDB
 import os
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
 
 apiEndpoint = "https://steamspy.com/api.php?request=top100forever"
+
+load_dotenv()
 
 db_name = os.getenv('DB_NAME')
 db_table = os.getenv('DB_TABLE')
@@ -13,20 +16,28 @@ db_user = os.getenv('DB_USER')
 db_password = os.getenv('DB_PASSWORD')
 db_host = os.getenv('DB_HOST')
 
+conn_string = f'postgresql://{db_user}:{db_password}@{db_host}/{db_name}'
+db = create_engine(conn_string)
 
-conn = pgDB.connect(
-    database = 'games',
-    user = 'postgres',
-    password = 'user',
-    host = 'localhost',
-    port = 5432,
-)
+conn = db.connect()
 
-cursor = conn.cursor()
-cursor.execute("SELECT * FROM public.top_games")
+# try:
+#     conn = pgDB.connect(
+#         database = db_name,
+#         user = db_user,
+#         password = db_password,
+#         host = db_host,
+#         port = 5432,
+#     )
+# except Exception as e:
+#     print(e)
+#     exit(0)
 
-data = cursor.fetchone()
-print("DATA: ", data)
+# cursor = conn.cursor()
+# cursor.execute("SELECT version()")
+
+# data = cursor.fetchone()
+# print("DATA: ", data)
 
 conn.close()
 
