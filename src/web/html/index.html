@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Analysis Findings</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-left">Ethan Gapay</div>
+      <div class="header-right">
+        <a href="#" target="_blank" id="personal-link">My Personal Website</a>
+      </div>
+    </header>
+    <main>
+      <div class="main-container">
+        <h1>Project Title</h1>
+        <div class="content-section">
+          <section>
+            <h2>Overview</h2>
+            <p>
+              In this project, I will be doing an analysis of the top 100 Steam
+              games since March 2009. I will giving a detailed report of the
+              entire analysis process starting from data extraction,
+              transformation, and loading, to visualization.
+            </p>
+          </section>
+          <section>
+            <h2>Goal</h2>
+            <p>
+              My goal is to grasp a better understanding of what makes these
+              games top the Steam charts since 2009. I will explore these
+              questions:
+            </p>
+            <ul>
+              <li>
+                What is the correlation between game price and average playtime?
+              </li>
+              <li>
+                What is the correlation between number of positive reviews and
+                average playtime?
+              </li>
+              <li>
+                What is the correlation between number of positive and total
+                reviews?
+              </li>
+              <li>Do paid games have more positive reviews than free games?</li>
+              <li>Are the more paid or free games in the top 100?</li>
+              <li>
+                What is the correlation between total reviews and average
+                playtime?
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Dashboard</h2>
+            <iframe
+              title="game_analysis_dashboard"
+              class="report"
+              src="https://app.powerbi.com/view?r=eyJrIjoiOThmNjY0MTUtMzQ1Ny00Yzc3LTk4ODUtZTM5YjU2ZjEyYzEzIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9"
+              frameborder="0"
+              allowfullscreen="true"
+            ></iframe>
+          </section>
+          <section>
+            <h2>Extraction</h2>
+            <p>
+              I did a lot of research looking for data that was both meaningful
+              and convenient to retrieve. I first searched on Kaggle looking at
+              these two datasets:
+              <a
+                target="_blank"
+                href="https://www.kaggle.com/datasets/fronkongames/steam-games-dataset"
+                >Dataset 1</a
+              >,
+              <a
+                target="_blank"
+                href="https://www.kaggle.com/datasets/nikdavis/steam-store-games/data"
+                >Dataset 2</a
+              >
+            </p>
+            <p>
+              Dataset 1 data seemed to be a strong candidate as there were a lot
+              of different fields to do analysis off of. However, upon further
+              inspection of the data it looked to be incorrect and/or outdated.
+              I decided to go with another dataset I had more confidence in.
+            </p>
+            <p>
+              Dataset 2 also seemed promising but looking at the data, it was
+              outdated about 5 years.
+            </p>
+            <p>
+              With no other publicly and readily available datasets to choose
+              from, I decided I had to create my own.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
