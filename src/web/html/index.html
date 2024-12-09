@@ -15,7 +15,7 @@
     </header>
     <main>
       <div class="main-container">
-        <h1>Project Title</h1>
+        <h1>Top Steam Game Analysis</h1>
         <div class="content-section">
           <section>
             <h2>Overview</h2>
@@ -45,12 +45,12 @@
                 What is the correlation between number of positive and total
                 reviews?
               </li>
-              <li>Do paid games have more positive reviews than free games?</li>
-              <li>Are the more paid or free games in the top 100?</li>
               <li>
                 What is the correlation between total reviews and average
                 playtime?
               </li>
+              <li>Do paid games have more positive reviews than free games?</li>
+              <li>Are there more paid or free games in the top 100?</li>
             </ul>
           </section>
           <section>
@@ -66,34 +66,79 @@
           <section>
             <h2>Extraction</h2>
             <p>
-              I did a lot of research looking for data that was both meaningful
-              and convenient to retrieve. I first searched on Kaggle looking at
+              I did research looking for data that was both meaningful and
+              convenient to retrieve. I first searched on Kaggle looking at
               these two datasets:
-              <a
-                target="_blank"
-                href="https://www.kaggle.com/datasets/fronkongames/steam-games-dataset"
-                >Dataset 1</a
-              >,
-              <a
-                target="_blank"
-                href="https://www.kaggle.com/datasets/nikdavis/steam-store-games/data"
-                >Dataset 2</a
-              >
             </p>
-            <p>
-              Dataset 1 data seemed to be a strong candidate as there were a lot
-              of different fields to do analysis off of. However, upon further
-              inspection of the data it looked to be incorrect and/or outdated.
-              I decided to go with another dataset I had more confidence in.
-            </p>
-            <p>
-              Dataset 2 also seemed promising but looking at the data, it was
-              outdated about 5 years.
-            </p>
+            <ul>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.kaggle.com/datasets/fronkongames/steam-games-dataset"
+                  >Dataset 1</a
+                >
+                data seemed to be a strong candidate as there were a lot of
+                different fields to do analysis off of. However, upon further
+                inspection of the data it looked to be incorrect and/or
+                outdated. I decided to look at another dataset I had more
+                confidence in.
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.kaggle.com/datasets/nikdavis/steam-store-games/data"
+                  >Dataset 2</a
+                >
+                also seemed promising but looking at the data, it was outdated
+                about 5 years.
+              </li>
+            </ul>
+            <p></p>
+            <p></p>
             <p>
               With no other publicly and readily available datasets to choose
-              from, I decided I had to create my own.
+              from, I decided I had to create my own. I looked at various
+              websites that holds information about Steam's games. These
+              included SteamDB, Steam's Official API, and Steam Spy.
             </p>
+            <ul>
+              <li>
+                <a href="https://steamdb.info/"><strong>SteamDB</strong></a> is
+                a third party website that collects data from Steam and allows
+                you to view more in-depth information such as price changes and
+                app ID. They also provide additional tools such as Steam charts,
+                sales, and account calculator. This seemed like the best way to
+                gather information as I planned on web scraping the info from
+                this website. Unfortunately, web scraping was prohibited from
+                the website, so I had to explore other options.
+              </li>
+              <li>
+                <a href="https://partner.steamgames.com/doc/home"
+                  ><strong>Steam's Official API</strong></a
+                >
+                was another option I considered, grabbing information directly
+                from the source. Using Steam's
+                <a href="https://api.steampowered.com/ISteamApps/GetAppList/v2/"
+                  >API</a
+                >, I grabbed a list of appIDs I would use to gather the
+                information. By making a GET request using the respective appID:
+                <a
+                  href="https://store.steampowered.com/api/appdetails?appids=550"
+                  >https://store.steampowered.com/api/appdetails?appids=550</a
+                >, I could gather a list of each games information and store it.
+                This process seemed to be the best solution, but I came across
+                an issue regarding API rate limiting. Steam only allows about
+                100,000 request a day and about 1 request every 10 seconds.
+                Gathering the data of this list of games would take over a month
+                to complete. Again, the information is there but not readily
+                available for use.
+              </li>
+              <li>
+                <a href="https://steamspy.com/api.php"
+                  ><strong>Steam Spy's API</strong></a
+                >
+              </li>
+            </ul>
           </section>
         </div>
       </div>
