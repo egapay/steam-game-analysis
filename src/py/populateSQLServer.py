@@ -16,7 +16,6 @@ engine = sqlalchemy.create_engine(f'mssql+pyodbc://{username}:{password}@{server
 
 response = requests.get(apiEndpoint)
 data = response.json()
-# print(json.dumps(data, indent=4))
 
 dataList = []
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')

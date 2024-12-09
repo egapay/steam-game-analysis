@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Analysis Findings</title>
     <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
   </head>
   <body>
     <header>
@@ -23,7 +31,7 @@
               In this project, I will be doing an analysis of the top 100 Steam
               games since March 2009. I will giving a detailed report of the
               entire analysis process starting from data extraction,
-              transformation, and loading, to visualization.
+              transformation, and loading, to visualization and analysis.
             </p>
           </section>
           <section>
@@ -57,7 +65,7 @@
             <h2>Dashboard</h2>
             <iframe
               title="game_analysis_dashboard"
-              class="report"
+              class="report report-dashboard"
               src="https://app.powerbi.com/view?r=eyJrIjoiOThmNjY0MTUtMzQ1Ny00Yzc3LTk4ODUtZTM5YjU2ZjEyYzEzIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9"
               frameborder="0"
               allowfullscreen="true"
@@ -93,8 +101,6 @@
                 about 5 years.
               </li>
             </ul>
-            <p></p>
-            <p></p>
             <p>
               With no other publicly and readily available datasets to choose
               from, I decided I had to create my own. I looked at various
@@ -137,8 +143,164 @@
                 <a href="https://steamspy.com/api.php"
                   ><strong>Steam Spy's API</strong></a
                 >
+                is a similar website to SteamDB where they track Steam game
+                information. This website, however, has a publicly available API
+                which has the all the correct information needed: price, average
+                playtime, reviews, etc. I ended up using this API to extract my
+                data from as it was up-to-date and accurate.
               </li>
             </ul>
+            <p>
+              After deciding to go with Steam Spy's API, I moved on to
+              transforming the data.
+            </p>
+          </section>
+          <section>
+            <h2>Transformation</h2>
+            <p>
+              I will be using <strong>Python</strong> with
+              <strong>Pandas</strong> to extract and transform the data.
+            </p>
+
+            <div class="code-explain">
+              <p>
+                Here we only have to make a single request to the API endpoint
+                which will get all the information necessary. Only needing to
+                call once solves our rate limiting issue:
+              </p>
+              <pre><code class="python"
+                  >
+apiEndpoint = "https://steamspy.com/api.php?request=top100forever"
+response = requests.get(apiEndpoint)
+data = response.json()</code>
+              </pre>
+            </div>
+            <div class="code-explain">
+              <p>This is an example of the data being sent by the API:</p>
+              <pre><code class="json">
+"730": {
+  "appid": 730,
+  "name": "Counter-Strike: Global Offensive",
+  "developer": "Valve",
+  "publisher": "Valve",
+  "score_rank": "",
+  "positive": 7325394,
+  "negative": 1102354,
+  "userscore": 0,
+  "owners": "100,000,000 .. 200,000,000",
+  "average_forever": 29986,
+  "average_2weeks": 904,
+  "median_forever": 6013,
+  "median_2weeks": 337,
+  "price": "0",
+  "initialprice": "0",
+  "discount": "0",
+  "ccu": 1595114
+},</code>
+              </pre>
+            </div>
+            <div class="code-explain">
+              <p>
+                We proceed to extract the data from this request, only
+                processing the necessary keys we want to do analysis on:
+              </p>
+              <pre><code class="python">
+for appid, appInfo in data.items():
+    dataList.append({
+        "appid":appid,
+        "name":appInfo.get("name"),
+        "positive":appInfo.get("positive"),
+        "positive_percentage": round((appInfo.get("positive") / (appInfo.get("positive") + appInfo.get("negative")) * 100), 2),
+        "negative":appInfo.get("negative"),
+        "negative_percentage": round((appInfo.get("negative") / (appInfo.get("positive") + appInfo.get("negative")) * 100), 2),
+        "total_reviews": appInfo.get("positive") + appInfo.get("negative"),
+        "price":int(appInfo.get("price"))/100,
+        "owners":appInfo.get("owners"),
+        "average_playtime_hours": round((appInfo.get("average_forever") / 60), 0),
+        "median_playtime_hours": round((appInfo.get("median_forever") / 60), 0),
+    })
+df = pd.DataFrame(dataList)</code>
+              </pre>
+            </div>
+          </section>
+          <section>
+            <h2>Loading</h2>
+            <div class="code-explain">
+              <p>
+                I used Pandas to load my data into both a .csv and a Microsoft
+                SQL Server Database
+              </p>
+              <pre><code class="python">
+engine = sqlalchemy.create_engine(f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server')
+          
+df.to_csv('topgames.csv', index=False)
+df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
+            </code>
+              </pre>
+            </div>
+            <div>
+              <p>Below is the loaded in data into topgames.csv:</p>
+              <img
+                src="../media/csv-img.png"
+                alt="image of excel spreadsheet"
+              />
+            </div>
+          </section>
+          <section>
+            <h2>Visualization</h2>
+            <p>
+              I used PowerBI to create my visualization reports. I used this as
+              it has easy integration with MSSQL Server and CSV files. Loading
+              in the data to PowerBI, I imported it from the MSSQL Server.
+            </p>
+          </section>
+          <section>
+            <h2>Analysis</h2>
+            <p>
+              In this section, I will be answering the questions asked above by
+              providing data visualizations and explanations for this data.
+            </p>
+            <div>
+              <div id="correlation">
+                <iframe
+                  title="gameCorrelation"
+                  class="report report-correlation"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiNzQyZDUwOWEtZGQ5My00MmQ1LTgxYWItZDJmYmFhOTNjYzM4IiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
+                <h3>
+                  What is the correlation between game price and average
+                  playtime?
+                </h3>
+                <p>Hello</p>
+                <h3>
+                  What is the correlation between number of positive reviews and
+                  average playtime?
+                </h3>
+                <p>Hello</p>
+                <h3>
+                  What is the correlation between number of positive and total
+                  reviews?
+                </h3>
+                <p>Hello</p>
+                <h3>
+                  What is the correlation between total reviews and average
+                  playtime?
+                </h3>
+                <p>Hello</p>
+              </div>
+              <div>
+                <h3>
+                  Do paid games have more positive reviews than free games?
+                </h3>
+                <p>Hello</p>
+              </div>
+              <div>
+                <h3>Are there more paid or free games in the top 100?</h3>
+                <p>Hello</p>
+              </div>
+            </div>
           </section>
         </div>
       </div>
