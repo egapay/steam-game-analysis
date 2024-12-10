@@ -228,7 +228,7 @@ df = pd.DataFrame(dataList)</code>
             <div class="code-explain">
               <p>
                 I used Pandas to load my data into both a .csv and a Microsoft
-                SQL Server Database
+                SQL Server Database.
               </p>
               <pre><code class="python">
 engine = sqlalchemy.create_engine(f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server')
@@ -283,7 +283,25 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   frameborder="0"
                   allowfullscreen="true"
                 ></iframe>
-                <p>Hello</p>
+                <p>
+                  There is a very weak (0.1 > x > 0.0) correlation between these
+                  two fields. This indicates that price does not have a
+                  determining factor on whether or not a game is played for a
+                  long time. This primarily depends on game genre such as story
+                  games or games that have competitive play. Story games have a
+                  definitive end to them meaning that after players finish the
+                  main story, there is not much more content to spend in the
+                  game, reducing the average playtime compared to games with
+                  competitive play. We can see a couple of these story games at
+                  $60 with Red Dead Redemption 2, Hogwarts Legacy, and Baldur's
+                  Gate 3. Games with competitive play tend to see a greater
+                  playtime due to their returning players continuing to try and
+                  get a better rank. We can see two of these games, Dota 2 and
+                  Counter-Strike: Global Offensive (<i
+                    >now called Counter-Strike 2</i
+                  >) with two of the highest average playtimes. These games have
+                  both competitive play and are free.
+                </p>
               </div>
               <div>
                 <h3>
@@ -304,7 +322,12 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   playtimes tend to receive more positive reviews. This
                   potentially could be because players felt like they got their
                   money's worth with the purchase of the game and the time spent
-                  playing.
+                  playing. The graph above shows most of the data sitting around
+                  the 5 to 300 hour range, with it slightly moving up the more
+                  average hours. We see two outliers again with Dota and
+                  Counter-Strike: Global Offensive as they both exceed the
+                  average range by almost double. Again, with the type of games
+                  they are, they tend to move away from the trend.
                 </p>
               </div>
               <div>
@@ -327,7 +350,9 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   players are willing to give give a game a review if they
                   enjoyed playing it. This correlation also suggest that the
                   more reviews these top games have, the more likely the
-                  majority of the reviews will be positive.
+                  majority of the reviews will be positive. We can see this
+                  trend in the graph above where there is a direct correlation
+                  between the two.
                 </p>
               </div>
               <div>
@@ -348,7 +373,9 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   two fields. Players who have played the game longer will most
                   likely give a review to the game. This shows the willingness a
                   player has the more time invested in a game to express their
-                  opinions.
+                  opinions. We can see an upward trend in the data showing the
+                  more reviews a game has the higher average playtime the player
+                  has.
                 </p>
               </div>
               <div>
@@ -361,7 +388,10 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   frameborder="0"
                   allowfullscreen="true"
                 ></iframe>
-                <p>Hello</p>
+                <p>
+                  The data shows we have 66 games which are paid and 34 games
+                  which are free.
+                </p>
               </div>
               <div>
                 <h3>
@@ -375,17 +405,52 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   frameborder="0"
                   allowfullscreen="true"
                 ></iframe>
-                <p>Hello</p>
+                <p>
+                  Although there are more paid games in the top 100, we can see
+                  proportionally free games have more average positive reviews.
+                  This shows that paid games do not always provide more
+                  meaningful positive outcomes than if it were free. A possible
+                  reasoning for this is players will be more inclined to leave a
+                  positive review since they got game content without having to
+                  buy anything.
+                </p>
               </div>
             </div>
           </section>
           <section>
             <h2>Conclusion</h2>
-            <p>Hello</p>
+            <p>
+              There is not one single factor that makes a game top the Steam
+              charts for years. The amount of playtime a player can get out of a
+              game has a good influence on the games reviews. Additionally, the
+              game being free vs. paid has a great effect on reviews as well.
+              Lastly, the game type is a driving factor into how many hours
+              players spend in the game. Competitive games turns players into
+              spending more hours in game, which then inclines them to leave
+              more positive reviews. Story games on the other hand, look to
+              provide great game content which inclines players to leave more
+              positive reviews.
+            </p>
+            <p>
+              An interesting trend I saw with the different graphs were the two
+              consistent outliers, Dota 2 and Counter-Strike: Global Offensive.
+              These two games were both created by Valve (<i>who owns Steam</i>)
+              so there potentially could be another reasoning for why these top
+              the charts aside from their content or game type.
+            </p>
           </section>
           <section>
             <h2>Reflection</h2>
-            <p>If I could do it all over again</p>
+            <p>
+              There is a lot that goes into making a great game and have it top
+              the Steam charts for years. Through this research, I hoped to have
+              given more insight on why these games do. For further work on this
+              analysis, I would like to find another way of retrieving this
+              similar data and compare it to mine to ensure consistency across
+              all fields. Additionally, I would like to look more into different
+              fields within these games such as their game type (genre) and
+              release date.
+            </p>
           </section>
         </div>
       </div>
