@@ -260,8 +260,8 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
               In this section, I will be answering the questions asked above by
               providing data visualizations and explanations for this data.
             </p>
-            <div>
-              <div id="correlation">
+            <div class="question-section">
+              <div>
                 <iframe
                   title="gameCorrelation"
                   class="report report-correlation"
@@ -269,50 +269,123 @@ df.to_sql('game_data', con = engine, if_exists='replace', chunksize=1000)
                   frameborder="0"
                   allowfullscreen="true"
                 ></iframe>
+              </div>
+              <div>
                 <h3>
                   What is the correlation between game price and average
                   playtime?
                 </h3>
+                <iframe
+                  title="gameData"
+                  width="600"
+                  height="373.5"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiYTlmNWE3NjgtZjY3Ni00MzU2LWIzYjQtOWFmMzZjZjhkNjdlIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9&pageName=c28ab8c09606d6558a3c"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
                 <p>Hello</p>
+              </div>
+              <div>
                 <h3>
                   What is the correlation between number of positive reviews and
                   average playtime?
                 </h3>
+                <iframe
+                  title="gameData"
+                  width="600"
+                  height="373.5"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiYTlmNWE3NjgtZjY3Ni00MzU2LWIzYjQtOWFmMzZjZjhkNjdlIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9&pageName=3b7ee8900d2dc106ed1c"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
                 <p>
                   There is a moderate correlation (0.8 > x > 0.5) between these
-                  two fields. This is most likely due to players who enjoy
-                  playing the game, tend to play it longer.
+                  two fields. Those who played longer or games that have longer
+                  playtimes tend to receive more positive reviews. This
+                  potentially could be because players felt like they got their
+                  money's worth with the purchase of the game and the time spent
+                  playing.
                 </p>
+              </div>
+              <div>
                 <h3>
                   What is the correlation between number of positive and total
                   reviews?
                 </h3>
+                <iframe
+                  title="gameData"
+                  width="600"
+                  height="373.5"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiYTlmNWE3NjgtZjY3Ni00MzU2LWIzYjQtOWFmMzZjZjhkNjdlIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9&pageName=58162c7621065c10b10c"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
                 <p>
                   We can see there is a strong correlation (1 > x > 0.8) between
-                  these two fields. When a review is placed on a game, it
-                  directly correlates it to being a positive review.
+                  these two fields. This means the majority of the reviews left
+                  on a top rated game tended to be positive. This shows that
+                  players are willing to give give a game a review if they
+                  enjoyed playing it. This correlation also suggest that the
+                  more reviews these top games have, the more likely the
+                  majority of the reviews will be positive.
                 </p>
+              </div>
+              <div>
                 <h3>
                   What is the correlation between total reviews and average
                   playtime?
                 </h3>
+                <iframe
+                  title="gameData"
+                  width="600"
+                  height="373.5"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiYTlmNWE3NjgtZjY3Ni00MzU2LWIzYjQtOWFmMzZjZjhkNjdlIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9&pageName=ace5a83e64a01a3968b4"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
                 <p>
                   There is a moderate correlation (0.8 > x > 0.5) between these
                   two fields. Players who have played the game longer will most
-                  likely give a review to the game.
+                  likely give a review to the game. This shows the willingness a
+                  player has the more time invested in a game to express their
+                  opinions.
                 </p>
+              </div>
+              <div>
+                <h3>Are there more paid or free games in the top 100?</h3>
+                <iframe
+                  title="gameData"
+                  width="600"
+                  height="373.5"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiYTlmNWE3NjgtZjY3Ni00MzU2LWIzYjQtOWFmMzZjZjhkNjdlIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9&pageName=27d4fa2721456057a70d"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
+                <p>Hello</p>
               </div>
               <div>
                 <h3>
                   Do paid games have more positive reviews than free games?
                 </h3>
-                <p>Hello</p>
-              </div>
-              <div>
-                <h3>Are there more paid or free games in the top 100?</h3>
+                <iframe
+                  title="gameData"
+                  width="600"
+                  height="373.5"
+                  src="https://app.powerbi.com/view?r=eyJrIjoiYTlmNWE3NjgtZjY3Ni00MzU2LWIzYjQtOWFmMzZjZjhkNjdlIiwidCI6IjhhODUwYTk1LTIwODItNDk3Yi05NjBiLTE1YmZjZDUzZDM2YyIsImMiOjJ9&pageName=b800cbc374c93574789b"
+                  frameborder="0"
+                  allowfullscreen="true"
+                ></iframe>
                 <p>Hello</p>
               </div>
             </div>
+          </section>
+          <section>
+            <h2>Conclusion</h2>
+            <p>Hello</p>
+          </section>
+          <section>
+            <h2>Reflection</h2>
+            <p>If I could do it all over again</p>
           </section>
         </div>
       </div>

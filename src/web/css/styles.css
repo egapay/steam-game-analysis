@@ -82,9 +82,10 @@ code {
   margin-top: 2rem;
 }
 
-.report {
+iframe {
   width: 100%;
   min-height: 100%;
+  height: 75vh;
 }
 
 .report-dashboard {
@@ -98,4 +99,9 @@ code {
 .code-explain {
   margin: 1rem 0;
   padding: 0;
+}
+
+.question-section div {
+  margin: 2rem 0;
+  padding: 1rem 0;
 }
