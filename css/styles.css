@@ -33,11 +33,10 @@ main {
   padding: 20px 50px;
   background: rgb(12, 28, 48);
   background: linear-gradient(
-    180deg,
+    120deg,
     rgba(12, 28, 48, 1) 0%,
-    rgba(7, 26, 67, 1) 25%,
-    rgba(19, 56, 108, 1) 50%,
-    rgba(18, 90, 141, 1) 75%,
+    rgba(7, 26, 67, 1) 33%,
+    rgba(18, 90, 141, 1) 66%,
     rgba(19, 130, 179, 1) 100%
   );
 }
@@ -60,6 +59,8 @@ h1 {
   border: 1px solid #ccc;
   background-color: #f9f9f9;
   min-height: 200px; /* Placeholder height */
+  border: 5px solid black;
+  border-radius: 15px;
 }
 
 section h2 {
